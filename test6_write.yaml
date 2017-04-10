@@ -1,0 +1,18 @@
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- whatever
+- something
+- attributes:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  dev_name: rtr01
+  ip_addr: 1.1.1.1
