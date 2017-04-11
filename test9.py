@@ -12,4 +12,9 @@ for i in ff_children:
       print i.parent.text
       for j in i.parent.all_children:
          print j.text
-
+   elif (i.is_parent):
+      print i.text
+      for j in i.all_children:
+         print j.text
+   else:
+      pass
