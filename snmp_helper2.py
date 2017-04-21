@@ -1,6 +1,10 @@
 from pysnmp.hlapi import *
 
-def snmp_get_oid_v3(snmp_user, auth_key, priv_key, snmp_device, snmp_port=161, auth_proto='sha', priv_proto='aes128', oid='.1.3.6.1.2.1.1.1.0'):
+def snmp_get_oid_v3(snmp_credentials, snmp_socket, snmp_security_level, oid='.1.3.6.1.2.1.1.1.0'):
+
+    (snmp_user, auth_key, priv_key) = snmp_credentials
+    (auth_proto, priv_proto) = snmp_security_level
+    (snmp_device, snmp_port) = snmp_socket
 
     auth_proto_map = {
         'sha':  usmHMACSHAAuthProtocol,
@@ -39,7 +43,10 @@ def snmp_get_oid_v3(snmp_user, auth_key, priv_key, snmp_device, snmp_port=161, a
 
     return get_oid
 
-def snmp_get_oid_v2c(community_string, snmp_device, snmp_port=161, oid='.1.3.6.1.2.1.1.1.0'):
+def snmp_get_oid_v2c(snmp_credentials, snmp_socket, oid='.1.3.6.1.2.1.1.1.0'):
+
+    (community_string) = snmp_credentials
+    (snmp_device, snmp_port) = snmp_socket
 
     get_oid = getCmd(
        SnmpEngine(),
