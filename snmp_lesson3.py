@@ -20,7 +20,7 @@ def main():
   snmp_socket = (snmp_device, snmp_port)
 
 
-  get_oid = snmp_get_oid('2c', snmp_credentials, snmp_socket, snmp_security_level, oid)
+  get_oid = snmp_get_oid('2c', snmp_credentials, snmp_socket, oid, snmp_security_level)
 
   print "Trying: "
   print_or_error(get_oid)
