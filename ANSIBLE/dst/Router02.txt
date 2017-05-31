@@ -1,0 +1,66 @@
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router02
+!
+boot-start-marker
+boot-end-marker
+!
+security passwords min-length 1
+!
+no aaa new-model
+clock timezone CST 8
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+ip source-route
+!
+!
+!
+!
+ip cef
+no ipv6 traffic interface-statistics
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+username test privilege 15 password 0 test
+!
+redundancy
+! 
+interface Ethernet1/3
+ ip address 192.168.20.112 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+snmp-server community test RW
+!
+snmp-server user test5 READONLY5 v2c 
+snmp-server user test6 READONLY6 v1 
+snmp-server user test4 READONLY4 v3
+snmp-server user test1 READONLY4 v3 encrypted auth sha test1111 priv aes test1111
+snmp-server user test2 READONLY1 v3 encrypted auth md5 test1111 priv 3des test1111
+snmp-server user test3 READONLY3 v3 encrypted auth sha test1111
+snmp-server group READONLY1 v3 priv match exact read VIEWSTD access 98
+snmp-server group READONLY3 v3 auth match exact read VIEWSTD access 98
+snmp-server group READONLY4 v3 noauth match exact read VIEWSTD access 98
+snmp-server group READONLY5 v2c read VIEWSTD access 98
+snmp-server group READONLY6 v1 read VIEWSTD access 98
+snmp-server view VIEWSTD iso included
+!
+control-plane
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login local
+!
+exception data-corruption buffer truncate
+!
+end

@@ -1,0 +1,14 @@
+---
+- hosts: local
+  tasks:
+    - name: Generate configuration files
+      template: 
+        src=/Users/nikolay/pynet_test/ANSIBLE/src/test_routers_config.j2 
+        dest=/Users/nikolay/pynet_test/ANSIBLE/dst/{{item.hostname}}.txt
+      with_items:
+        - {hostname: Router01, ip_addr: 192.168.20.111}
+        - {hostname: Router02, ip_addr: 192.168.20.112}
+        - {hostname: Router03, ip_addr: 192.168.20.113}
+        - {hostname: Router04, ip_addr: 192.168.20.114}
+        - {hostname: Router05, ip_addr: 192.168.20.115}
+        - {hostname: Router06, ip_addr: 192.168.20.116}

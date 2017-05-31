@@ -1,0 +1,17 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Setup Django environment variables
+export DJANGO_SETTINGS_MODULE=djproject.settings
+export PYTHONPATH=~/DJANGOX/djproject/
+
+# Set PATH to include netmiko-tools
+export PATH=$PATH:/home/nlinkov/netmiko_tools/netmiko_tools
+
+# Login to the applied python virtualenv
+source /home/nlinkov/applied_python/bin/activate
+

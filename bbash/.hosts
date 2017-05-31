@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain
+184.105.247.70 pynet-rtr1
+184.105.247.71 pynet-rtr2
+184.105.247.72 pynet-sw1
+184.105.247.73 pynet-sw2
+184.105.247.74 pynet-sw3
+184.105.247.75 pynet-sw4
+184.105.247.76 pynet-jnpr-srx1

@@ -1,0 +1,15 @@
+---
+- hosts: local
+  strategy: debug
+  tasks:
+    - name: Generate configuration file
+      template: 
+        src=/Users/nikolay/pynet_test/ANSIBLE/src/test_routers_config1.j2 
+        dest=/Users/nikolay/pynet_test/ANSIBLE/dst/{{item.hostname}}.txt
+      with_items:
+        - {hostname: Router01}
+        - {hostname: Router02}
+        - {hostname: Router03}
+        - {hostname: Router04}
+        - {hostname: Router05}
+        - {hostname: Router06}
